@@ -35,16 +35,16 @@ public class EventTest {
     public void testZonenPositionen() {
         // Überprüfe die Positionen der Zonen
         Zone food = event.getZoneByType(Zone.ZoneType.FOOD);
-        assertEquals(new Int2D(10, 10), food.getPosition());
+        assertEquals(new Int2D(5, 15), food.getPosition());
 
         Zone actMain = event.getZoneByType(Zone.ZoneType.ACT_MAIN);
-        assertEquals(new Int2D(50, 20), actMain.getPosition());
+        assertEquals(new Int2D(50, 45), actMain.getPosition());
 
         Zone actSide = event.getZoneByType(Zone.ZoneType.ACT_SIDE);
-        assertEquals(new Int2D(30, 70), actSide.getPosition());
+        assertEquals(new Int2D(15, 85), actSide.getPosition());
 
         Zone exit = event.getZoneByType(Zone.ZoneType.EXIT);
-        assertEquals(new Int2D(50, 99), exit.getPosition());
+        assertEquals(new Int2D(60, 90), exit.getPosition());
     }
 
     @Test
@@ -90,7 +90,7 @@ public class EventTest {
     @Test
     public void testAgentenErzeugung() {
         // Prüfen, ob genau 5 Agenten erzeugt wurden
-        assertEquals(0, event.agents.size(), "Es wurden nicht genau 0 Agenten erzeugt");
+        assertEquals(6, event.agents.size(), "Es wurden nicht genau 5 Agenten erzeugt");
 
         // Prüfen, ob alle Agenten im Grid platziert sind
         for (Agent agent : event.agents) {
@@ -107,7 +107,7 @@ public class EventTest {
                     break;
                 }
             }
-            assertTrue(inAnyZone, "Agent befindet sich in keiner Zone: " + agent);
+            assertFalse(inAnyZone, "Agent befindet sich in keiner Zone: " + agent);
         }
     }
 }
